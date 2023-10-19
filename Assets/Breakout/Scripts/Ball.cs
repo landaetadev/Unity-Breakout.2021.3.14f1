@@ -37,7 +37,7 @@ public class Ball : MonoBehaviour
             rigidbody2d.velocity = Vector2.up * ballSpeed;
             transform.SetParent(null);
             gameManager.ballIsOnPlay = true;
-            if (gameManager.GameStarted = false) {
+            if (gameManager.GameStarted == false) {
                 gameManager.GameStarted = true; //COMIENZA A CONTAR EL TIEMPO DE JUEGO
             }
         }

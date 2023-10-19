@@ -10,7 +10,7 @@ public class GameManager : MonoBehaviour
     public bool ballIsOnPlay;
     float gameTime; //Tiempo de duracion del juego
     bool gameStarted;
-    
+    [SerializeField] UIController uiController;
 
     public int BricksOnLevel {
         get => bricksOnLevel;
@@ -18,13 +18,14 @@ public class GameManager : MonoBehaviour
             bricksOnLevel = value;
             if (bricksOnLevel == 0) {
                 print("Game Over!");
-                Destroy(GameObject.Find("Ball"));
+                Destroy(GameObject.Find("Ball")); //DESTRUIR LA BOLA
                 //MOSTRAR EL TIEMPO
                 gameTime = Time.time - gameTime;
                 print("Tiempo de juego: " + gameTime);
-                // uiController.ActivateWinnerScreen();
+
                 //MOSTRAR PANTALLA DE GANADOR
-                // uiController.UpdateTime(gameTime);
+                uiController.ActivateWinnerScreen();
+                uiController.UpdateTime(gameTime); //MUESTRA EL TIEMPO FINAL EN LA UI
             }
         }
     }
@@ -41,10 +42,10 @@ public class GameManager : MonoBehaviour
         get => playerLives;
         set {
             playerLives = value;
-            // uiController.UpdateLives(playerLives);
-            if (playerLives == 0) {
-                // uiController.ActivateLoseScreen();
-                Destroy(GameObject.Find("Ball"));
+            uiController.UpdateLives(playerLives); //ACTUALIZAR LA CANTIDAD DE VIDAS EN LA UI
+            if (playerLives == 0) { //SI EL JUGADOR SE QUEDA SIN VIDAS
+                uiController.ActivateLoseScreen(); //MOSTRAR PANTALLA DE PERDEDOR
+                Destroy(GameObject.Find("Ball")); //DESTRUIR LA BOLA
             }
         }
     }
