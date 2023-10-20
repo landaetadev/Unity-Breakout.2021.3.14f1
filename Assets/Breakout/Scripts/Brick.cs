@@ -6,6 +6,7 @@ public class Brick : MonoBehaviour
 {
     //GameObject gameManagerObj;
     GameManager gameManager;
+    [SerializeField] GameObject explosionPrefab;
     private void Start()
     {
         /*gameManagerObj = GameObject.Find("GameManager");
@@ -26,7 +27,7 @@ public class Brick : MonoBehaviour
         if (gameManager != null) {
             gameManager.BricksOnLevel -= 1;
         }
-
+        Instantiate(explosionPrefab, transform.position, Quaternion.identity); // ACTIVA SONIDO DE EXPLOSION
         Destroy(gameObject);
 
     }
