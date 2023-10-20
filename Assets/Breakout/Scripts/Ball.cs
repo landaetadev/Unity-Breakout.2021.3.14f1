@@ -10,7 +10,8 @@ public class Ball : MonoBehaviour
     Vector2 currentVelocity;
     GameManager gameManager;
     Transform paddle;
-    bool superBall;
+    [SerializeField] AudioController audioController;
+    [SerializeField] AudioClip bounceSfx;
 
     void Start()
     {
@@ -53,6 +54,8 @@ public class Ball : MonoBehaviour
     {
         moveDirection = Vector2.Reflect(currentVelocity, collision.GetContact(0).normal);
         rigidbody2d.velocity = moveDirection;
+        //SONIDO
+        audioController.PlaySfx(bounceSfx);
 
         if (collision.transform.CompareTag("BottomLimit")) {
 

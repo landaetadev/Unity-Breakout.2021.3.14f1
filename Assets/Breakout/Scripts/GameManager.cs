@@ -17,14 +17,14 @@ public class GameManager : MonoBehaviour
         set {
             bricksOnLevel = value;
             if (bricksOnLevel == 0) {
-                print("Game Over!");
+                print("WIN!");
                 Destroy(GameObject.Find("Ball")); //DESTRUIR LA BOLA
-                //MOSTRAR EL TIEMPO
+
+                //MOSTRAR EL TIEMPO DE JUEGO
                 gameTime = Time.time - gameTime;
                 print("Tiempo de juego: " + gameTime);
 
-                //MOSTRAR PANTALLA DE GANADOR
-                uiController.ActivateWinnerScreen();
+                uiController.ActivateWinnerScreen();//MOSTRAR PANTALLA DE GANADOR
                 uiController.UpdateTime(gameTime); //MUESTRA EL TIEMPO FINAL EN LA UI
             }
         }
@@ -44,6 +44,7 @@ public class GameManager : MonoBehaviour
             playerLives = value;
             uiController.UpdateLives(playerLives); //ACTUALIZAR LA CANTIDAD DE VIDAS EN LA UI
             if (playerLives == 0) { //SI EL JUGADOR SE QUEDA SIN VIDAS
+                print("LOSE!");
                 uiController.ActivateLoseScreen(); //MOSTRAR PANTALLA DE PERDEDOR
                 Destroy(GameObject.Find("Ball")); //DESTRUIR LA BOLA
             }
