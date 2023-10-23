@@ -5,6 +5,8 @@ TagManager:
   serializedVersion: 2
   tags:
   - BottomLimit
+  - Brick
+  - TopLimit
   layers:
   - Default
   - TransparentFX

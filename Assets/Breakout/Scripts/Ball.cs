@@ -12,6 +12,24 @@ public class Ball : MonoBehaviour
     Transform paddle;
     [SerializeField] AudioController audioController;
     [SerializeField] AudioClip bounceSfx;
+    bool superBall;
+    [SerializeField] float superBallTime = 10;
+
+    public bool SuperBall {
+        get => superBall;
+        set {
+            superBall = value;
+            if(superBall == true)
+                StartCoroutine(ResetSuperBall());
+        }
+    }
+    IEnumerator ResetSuperBall() {
+        // trailRenderer.enabled = true;
+        yield return new WaitForSeconds(superBallTime);
+        // trailRenderer.enabled = false;
+        gameManager.powerUpIsActive = false;
+        superBall = false;
+    }
 
     void Start()
     {
@@ -52,6 +70,13 @@ public class Ball : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
+
+        //SI LA BOLA CHOCO CON UN BRICK CAMBIA DE DIRECCION
+        if (collision.transform.CompareTag("Brick") && superBall) {
+            rigidbody2d.velocity = currentVelocity;
+            return;
+        }
+
         moveDirection = Vector2.Reflect(currentVelocity, collision.GetContact(0).normal);
         rigidbody2d.velocity = moveDirection;
         //SONIDO
@@ -62,13 +87,13 @@ public class Ball : MonoBehaviour
             if (gameManager != null) {
                 gameManager.PlayerLives -= 1;
                 if (gameManager.PlayerLives > 0) {
-                rigidbody2d.velocity = Vector2.zero;
-                transform.SetParent(paddle); //TRAER LA BOLA AL PADDLE
-                transform.localPosition = new Vector2(0, 0.61f); //POSICIONAR LA BOLA EN EL PADDLE
-                gameManager.ballIsOnPlay = false; //LA BOLA NO ESTA EN JUEGO
+                    rigidbody2d.velocity = Vector2.zero;
+                    transform.SetParent(paddle); //TRAER LA BOLA AL PADDLE
+                    transform.localPosition = new Vector2(0, 0.61f); //POSICIONAR LA BOLA EN EL PADDLE
+                    gameManager.ballIsOnPlay = false; //LA BOLA NO ESTA EN JUEGO
                 }
             }
-
         }
     }
+
 }

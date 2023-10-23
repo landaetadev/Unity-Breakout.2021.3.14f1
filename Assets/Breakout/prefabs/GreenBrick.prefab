@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 6733515250762508636}
   m_Layer: 0
   m_Name: GreenBrick
-  m_TagString: Untagged
+  m_TagString: Brick
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -125,3 +125,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   explosionPrefab: {fileID: 1485818025183924926, guid: 9abd20326b7ba4553a6db1ce9a1743c7, type: 3}
+  powerUpsPrefabs:
+  - {fileID: 3112954119836574720, guid: bbe1aca645e4747668f4e54125b9d511, type: 3}
+  - {fileID: 8513779329275223996, guid: 198b311919b3244e8ba49e65275f8a00, type: 3}
+  - {fileID: 2042507956042528907, guid: 44bcc4b969d7542f6a1c64e4fcf1bad2, type: 3}

@@ -11,6 +11,8 @@ public class GameManager : MonoBehaviour
     float gameTime; //Tiempo de duracion del juego
     bool gameStarted;
     [SerializeField] UIController uiController;
+    public bool powerUpOnscene;
+    public bool powerUpIsActive;
 
     public int BricksOnLevel {
         get => bricksOnLevel;

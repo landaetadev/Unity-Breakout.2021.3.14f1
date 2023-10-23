@@ -711,6 +711,7 @@ MonoBehaviour:
   ballSpeed: 5
   audioController: {fileID: 1272449880}
   bounceSfx: {fileID: 8300000, guid: 652f4900c2eeb46919589e4426efd68b, type: 3}
+  superBallTime: 10
 --- !u!1 &184418097
 GameObject:
   m_ObjectHideFlags: 0
@@ -1238,7 +1239,7 @@ GameObject:
   - component: {fileID: 391365586}
   m_Layer: 0
   m_Name: Top
-  m_TagString: Untagged
+  m_TagString: TopLimit
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5236,7 +5237,7 @@ GameObject:
   - component: {fileID: 1848930190}
   m_Layer: 0
   m_Name: Paddle
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5255,6 +5256,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   paddleSpeed: 5
   xLimit: 7.1
+  bigSizeTime: 10
+  gameManager: {fileID: 614114781}
+  bulletPrefab: {fileID: 737791518622853866, guid: af1fbef10d7754ef29fd0ab12996f469, type: 3}
+  fireRate: 1
+  bulletsTime: 10
+  bulletOffset: {x: 0, y: 1, z: 0}
 --- !u!212 &1848930188
 SpriteRenderer:
   m_ObjectHideFlags: 0

@@ -4,11 +4,11 @@ using UnityEngine;
 
 public class SelfDestroy : MonoBehaviour
 {
-    // [SerializeField] float delay = .5f;
+    [SerializeField] float delay;
 
     void Start()
     {
-        // Destroy(gameObject, delay);
+        Destroy(gameObject, delay);
     }
 
     public void DestroyFromEvent() {
