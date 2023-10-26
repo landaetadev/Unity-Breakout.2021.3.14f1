@@ -36,9 +36,12 @@ public class Brick : MonoBehaviour
         Destroy(gameObject);
     }
 
+    private void OnApplicationQuit() {
+        isQuitting = true;
+    }
     private void OnDestroy() {
-        // if (isQuitting)
-        //     return;
+        if (isQuitting == true)
+            return;
 
         // || gameManager.powerUpIsActive
         if (gameManager.powerUpOnscene)

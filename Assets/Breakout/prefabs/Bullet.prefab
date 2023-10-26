@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 737791517945610760}
   - component: {fileID: 737791517945610761}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: BreakoutSprites_5
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -97,7 +97,7 @@ GameObject:
   - component: {fileID: 737791518622853864}
   - component: {fileID: 737791518622853862}
   - component: {fileID: 737791518622853863}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Bullet
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -182,3 +182,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 66ed7f179ba084c4fb020e58ac55892d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  delay: 0

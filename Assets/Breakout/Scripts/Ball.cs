@@ -8,12 +8,15 @@ public class Ball : MonoBehaviour
     [SerializeField] float ballSpeed = 5;
     Vector2 moveDirection;
     Vector2 currentVelocity;
-    GameManager gameManager;
+    // GameManager gameManager;
     Transform paddle;
     [SerializeField] AudioController audioController;
     [SerializeField] AudioClip bounceSfx;
     bool superBall;
     [SerializeField] float superBallTime = 10;
+    [SerializeField] float yMinSpeed = 2;
+
+    [SerializeField] TrailRenderer trailRenderer; //COLA DE LA BOLA
 
     public bool SuperBall {
         get => superBall;
@@ -24,10 +27,10 @@ public class Ball : MonoBehaviour
         }
     }
     IEnumerator ResetSuperBall() {
-        // trailRenderer.enabled = true;
+        trailRenderer.enabled = true;
         yield return new WaitForSeconds(superBallTime);
-        // trailRenderer.enabled = false;
-        gameManager.powerUpIsActive = false;
+        trailRenderer.enabled = false;
+        GameManager.InstanceGameManager.powerUpIsActive = false;
         superBall = false;
     }
 
@@ -35,7 +38,7 @@ public class Ball : MonoBehaviour
     {
         //rigidbody2d.GetComponent<Rigidbody2D>();
         //rigidbody2d.velocity = Vector2.up * ballSpeed;
-        gameManager = FindObjectOfType<GameManager>();
+        // gameManager = FindObjectOfType<GameManager>();
         paddle = transform.parent;
     }
 
@@ -52,12 +55,12 @@ public class Ball : MonoBehaviour
         // }
 
         //INICIA LA BOLA CON EL CLICK DEL MOUSE
-        if (Input.GetMouseButtonDown(0) && gameManager.ballIsOnPlay == false) {
+        if (Input.GetMouseButtonDown(0) && GameManager.InstanceGameManager.ballIsOnPlay == false) {
             rigidbody2d.velocity = Vector2.up * ballSpeed;
             transform.SetParent(null);
-            gameManager.ballIsOnPlay = true;
-            if (gameManager.GameStarted == false) {
-                gameManager.GameStarted = true; //COMIENZA A CONTAR EL TIEMPO DE JUEGO
+            GameManager.InstanceGameManager.ballIsOnPlay = true;
+            if (GameManager.InstanceGameManager.GameStarted == false) {
+                GameManager.InstanceGameManager.GameStarted = true; //COMIENZA A CONTAR EL TIEMPO DE JUEGO
             }
         }
     }
@@ -78,19 +81,26 @@ public class Ball : MonoBehaviour
         }
 
         moveDirection = Vector2.Reflect(currentVelocity, collision.GetContact(0).normal);
+
+        // VELOCIDAD MINIMA EN Y
+        if (Mathf.Abs(moveDirection.y) < yMinSpeed) {
+            moveDirection.y = yMinSpeed * Mathf.Sign(moveDirection.y);
+            transform.SetParent(null);
+        }
+
         rigidbody2d.velocity = moveDirection;
         //SONIDO
         audioController.PlaySfx(bounceSfx);
 
         if (collision.transform.CompareTag("BottomLimit")) {
 
-            if (gameManager != null) {
-                gameManager.PlayerLives -= 1;
-                if (gameManager.PlayerLives > 0) {
+            if (GameManager.InstanceGameManager != null) {
+                GameManager.InstanceGameManager.PlayerLives -= 1;
+                if (GameManager.InstanceGameManager.PlayerLives > 0) {
                     rigidbody2d.velocity = Vector2.zero;
                     transform.SetParent(paddle); //TRAER LA BOLA AL PADDLE
                     transform.localPosition = new Vector2(0, 0.61f); //POSICIONAR LA BOLA EN EL PADDLE
-                    gameManager.ballIsOnPlay = false; //LA BOLA NO ESTA EN JUEGO
+                    GameManager.InstanceGameManager.ballIsOnPlay = false; //LA BOLA NO ESTA EN JUEGO
                 }
             }
         }

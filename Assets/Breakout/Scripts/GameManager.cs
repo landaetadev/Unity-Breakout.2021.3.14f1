@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
+    public static GameManager InstanceGameManager;
 
     [SerializeField] int bricksOnLevel;
     [SerializeField] int playerLives = 3;
@@ -13,6 +14,13 @@ public class GameManager : MonoBehaviour
     [SerializeField] UIController uiController;
     public bool powerUpOnscene;
     public bool powerUpIsActive;
+
+    private void Awake()
+    {
+        if (InstanceGameManager == null) {
+            InstanceGameManager = this;
+        }
+    }
 
     public int BricksOnLevel {
         get => bricksOnLevel;
@@ -50,6 +58,13 @@ public class GameManager : MonoBehaviour
                 uiController.ActivateLoseScreen(); //MOSTRAR PANTALLA DE PERDEDOR
                 Destroy(GameObject.Find("Ball")); //DESTRUIR LA BOLA
             }
+        }
+    }
+
+    private void Update()//CERRAR EL JUEGO
+    {
+        if (Input.GetKeyDown(KeyCode.Escape)) {
+            Application.Quit();
         }
     }
 }
