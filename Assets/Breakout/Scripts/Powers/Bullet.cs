@@ -4,11 +4,11 @@ using UnityEngine;
 
 public class Bullet : MonoBehaviour
 {
-    // [SerializeField] float speed = 1;
-    // void Update()
-    // {
-    //     transform.Translate(Vector2.up * Time.deltaTime * speed);
-    // }
+    [SerializeField] float speed = 5;
+    void Update()
+    {
+        transform.Translate(Vector2.up * Time.deltaTime * speed);
+    }
 
     private void OnCollisionEnter2D(Collision2D collision)
     {

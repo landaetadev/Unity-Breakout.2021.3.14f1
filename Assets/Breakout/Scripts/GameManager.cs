@@ -4,12 +4,12 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
-    public static GameManager InstanceGameManager;
+    public static GameManager Instance;
 
     [SerializeField] int bricksOnLevel;
     [SerializeField] int playerLives = 3;
     public bool ballIsOnPlay;
-    float gameTime; //Tiempo de duracion del juego
+    float gameTime;
     bool gameStarted;
     [SerializeField] UIController uiController;
     public bool powerUpOnscene;
@@ -17,25 +17,31 @@ public class GameManager : MonoBehaviour
 
     private void Awake()
     {
-        if (InstanceGameManager == null) {
-            InstanceGameManager = this;
+        if (Instance == null) {
+            Instance = this;
         }
     }
-
     public int BricksOnLevel {
         get => bricksOnLevel;
         set {
             bricksOnLevel = value;
             if (bricksOnLevel == 0) {
-                print("WIN!");
-                Destroy(GameObject.Find("Ball")); //DESTRUIR LA BOLA
-
-                //MOSTRAR EL TIEMPO DE JUEGO
+                Destroy(GameObject.Find("Ball"));
+                uiController.ActivateWinnerScreen();
                 gameTime = Time.time - gameTime;
-                print("Tiempo de juego: " + gameTime);
+                uiController.UpdateTime(gameTime);
+            }
+        }
+    }
 
-                uiController.ActivateWinnerScreen();//MOSTRAR PANTALLA DE GANADOR
-                uiController.UpdateTime(gameTime); //MUESTRA EL TIEMPO FINAL EN LA UI
+    public int PlayerLives {
+        get => playerLives;
+        set {
+            playerLives = value;
+            uiController.UpdateLives(playerLives); //ACTUALIZAR LA CANTIDAD DE VIDAS EN LA UI
+            if (playerLives == 0) { //SI EL JUGADOR SE QUEDA SIN VIDAS
+                uiController.ActivateLoseScreen(); //MOSTRAR PANTALLA DE PERDEDOR
+                Destroy(GameObject.Find("Ball")); //DESTRUIR LA BOLA
             }
         }
     }
@@ -48,20 +54,7 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    public int PlayerLives {
-        get => playerLives;
-        set {
-            playerLives = value;
-            uiController.UpdateLives(playerLives); //ACTUALIZAR LA CANTIDAD DE VIDAS EN LA UI
-            if (playerLives == 0) { //SI EL JUGADOR SE QUEDA SIN VIDAS
-                print("LOSE!");
-                uiController.ActivateLoseScreen(); //MOSTRAR PANTALLA DE PERDEDOR
-                Destroy(GameObject.Find("Ball")); //DESTRUIR LA BOLA
-            }
-        }
-    }
-
-    private void Update()//CERRAR EL JUEGO
+    private void Update() //CERRAR EL JUEGO
     {
         if (Input.GetKeyDown(KeyCode.Escape)) {
             Application.Quit();

@@ -9,42 +9,42 @@ public class Brick : MonoBehaviour
     [SerializeField] GameObject explosionPrefab;
     [SerializeField] GameObject[] powerUpsPrefabs;
     [SerializeField] int powerUpChance = 20;
-    public bool powerUpOnscene;
     bool isQuitting;
-
     private void Start()
     {
         /*gameManagerObj = GameObject.Find("GameManager");
         if (gameManagerObj != null) {
             gameManager = gameManagerObj.GetComponent<GameManager>();
             if (gameManager != null) {
-                gameManager.bricksOnLevel += 1;
+                gameManager.bricksOnLevel++;
             }
         }*/
-
+        
         gameManager = FindObjectOfType<GameManager>();
         if (gameManager != null) {
-            gameManager.BricksOnLevel += 1;
+            gameManager.BricksOnLevel++;
         }
+        
     }
-    private void OnCollisionEnter2D(Collision2D collision) {
-
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
         if (gameManager != null) {
-            gameManager.BricksOnLevel -= 1;
+            gameManager.BricksOnLevel--;
         }
-        Instantiate(explosionPrefab, transform.position, Quaternion.identity); // ACTIVA SONIDO DE EXPLOSION
+        Instantiate(explosionPrefab, transform.position, Quaternion.identity);
         Destroy(gameObject);
     }
 
-    private void OnApplicationQuit() {
+    private void OnApplicationQuit()
+    {
         isQuitting = true;
     }
-    private void OnDestroy() {
-        if (isQuitting == true)
+    private void OnDestroy()
+    {
+        if (isQuitting)
             return;
 
-        // || gameManager.powerUpIsActive
-        if (gameManager.powerUpOnscene)
+        if (gameManager.powerUpOnscene || gameManager.powerUpIsActive)
             return;
 
         int possibility = Random.Range(0, 100);

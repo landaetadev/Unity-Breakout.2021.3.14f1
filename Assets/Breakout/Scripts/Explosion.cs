@@ -8,8 +8,8 @@ public class Explosion : MonoBehaviour
     [SerializeField] AudioClip explosionSfx;
     void Start()
     {
-        AudioController audioController = FindObjectOfType<AudioController>();
-        audioController.PlaySfx(explosionSfx);
+        AudioController audicoController = FindObjectOfType<AudioController>();
+        audicoController.PlaySfx(explosionSfx);
     }
-
+    
 }

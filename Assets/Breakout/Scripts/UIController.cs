@@ -1,42 +1,53 @@
 using System.Collections;
 using System.Collections.Generic;
-using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class UIController : MonoBehaviour
 {
-
     [SerializeField] GameObject loseScreen;
     [SerializeField] GameObject winnerScreen;
     [SerializeField] GameObject[] hearts;
-    [SerializeField] TMP_Text gameTimeUI;
+    [SerializeField] Text gameTimeUI;
     [SerializeField] AudioController audioController;
     [SerializeField] AudioClip buttonPressedSfx;
     [SerializeField] AudioClip loseLifeSfx;
+    [SerializeField] GameObject[] buttons;
 
-
-    public void ActivateLoseScreen()
-    {
-        audioController.UpdateMusicVolume(.25f);
+    public void ActivateLoseScreen() {
+        audioController.UpdateMusicVolume(0.5f);
         loseScreen.SetActive(true);
     }
 
-    public void ActivateWinnerScreen()
-    {
-        audioController.UpdateMusicVolume(.25f);
+    public void ActivateWinnerScreen() {
+        audioController.UpdateMusicVolume(0.5f);
         winnerScreen.SetActive(true);
     }
 
-    public void TryAgain() {
+    void TryAgain() {
         audioController.PlaySfx(buttonPressedSfx); //SONIDO AL PRESIONAR BOTON
+        foreach (var button in buttons) {
+            button.SetActive(false);
+        }
         SceneManager.LoadScene("Game");
     }
 
-    public void LoadMainMenu() {
+    void MainMenu() {
         audioController.PlaySfx(buttonPressedSfx); //SONIDO AL PRESIONAR BOTON
+        foreach (var button in buttons)
+        {
+            button.SetActive(false);
+        }
         SceneManager.LoadScene("MainMenu");
+    }
+
+    public void TryAgainWithDelay(float delay) {
+        Invoke("TryAgain", delay);
+    }
+
+    public void LoadMainMenuWithDelay(float delay) {
+        Invoke("MainMenu", delay);
     }
 
     public void UpdateLives(int currentLives) {
@@ -45,11 +56,10 @@ public class UIController : MonoBehaviour
                 hearts[i].SetActive(false);
             }
         }
-        audioController.PlaySfx(loseLifeSfx); //SONIDO AL PERDER UNA VIDA
+        audioController.PlaySfx(loseLifeSfx);
     }
 
     public void UpdateTime(float gameTime) {
-        gameTimeUI.text = "Time: " + Mathf.Floor(gameTime) + " seconds";
-        
+        gameTimeUI.text = "Time: " + Mathf.Floor(gameTime);
     }
 }

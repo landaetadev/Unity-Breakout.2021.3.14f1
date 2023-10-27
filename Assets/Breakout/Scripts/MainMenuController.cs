@@ -13,7 +13,7 @@ public class MainMenuController : MonoBehaviour
     }
 
     public void LoadSceneWithDelay(float delay) {
-        loadGameButton.SetActive(false); //DESACTIVA EL BOTON AL PRESIONARLO
+        loadGameButton.SetActive(false);  //DESACTIVA EL BOTON AL PRESIONARLO
         audioSource.clip = buttonPressedSfx;
         audioSource.Play();
         Invoke("LoadGameScene", delay);

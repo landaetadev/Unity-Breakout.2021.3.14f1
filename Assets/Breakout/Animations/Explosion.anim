@@ -20,17 +20,17 @@ AnimationClip:
   m_PPtrCurves:
   - curve:
     - time: 0
-      value: {fileID: -303758364, guid: 66043426fe17645b682fc32d6c303639, type: 3}
+      value: {fileID: 5986030973748356752, guid: df480a9eaf21a144b93ac403b40ddc36, type: 3}
     - time: 0.083333336
-      value: {fileID: -1261591578, guid: 66043426fe17645b682fc32d6c303639, type: 3}
+      value: {fileID: -5600206312213581617, guid: df480a9eaf21a144b93ac403b40ddc36, type: 3}
     - time: 0.16666667
-      value: {fileID: 866327470, guid: 66043426fe17645b682fc32d6c303639, type: 3}
+      value: {fileID: 3815954189206336483, guid: df480a9eaf21a144b93ac403b40ddc36, type: 3}
     - time: 0.25
-      value: {fileID: -38267742, guid: 66043426fe17645b682fc32d6c303639, type: 3}
+      value: {fileID: -3690502768834906923, guid: df480a9eaf21a144b93ac403b40ddc36, type: 3}
     - time: 0.33333334
-      value: {fileID: 1072346260, guid: 66043426fe17645b682fc32d6c303639, type: 3}
+      value: {fileID: -49130668184793455, guid: df480a9eaf21a144b93ac403b40ddc36, type: 3}
     - time: 0.41666666
-      value: {fileID: 1628350228, guid: 66043426fe17645b682fc32d6c303639, type: 3}
+      value: {fileID: -2330519403281856691, guid: df480a9eaf21a144b93ac403b40ddc36, type: 3}
     attribute: m_Sprite
     path: 
     classID: 212
@@ -50,12 +50,12 @@ AnimationClip:
       customType: 23
       isPPtrCurve: 1
     pptrCurveMapping:
-    - {fileID: -303758364, guid: 66043426fe17645b682fc32d6c303639, type: 3}
-    - {fileID: -1261591578, guid: 66043426fe17645b682fc32d6c303639, type: 3}
-    - {fileID: 866327470, guid: 66043426fe17645b682fc32d6c303639, type: 3}
-    - {fileID: -38267742, guid: 66043426fe17645b682fc32d6c303639, type: 3}
-    - {fileID: 1072346260, guid: 66043426fe17645b682fc32d6c303639, type: 3}
-    - {fileID: 1628350228, guid: 66043426fe17645b682fc32d6c303639, type: 3}
+    - {fileID: 5986030973748356752, guid: df480a9eaf21a144b93ac403b40ddc36, type: 3}
+    - {fileID: -5600206312213581617, guid: df480a9eaf21a144b93ac403b40ddc36, type: 3}
+    - {fileID: 3815954189206336483, guid: df480a9eaf21a144b93ac403b40ddc36, type: 3}
+    - {fileID: -3690502768834906923, guid: df480a9eaf21a144b93ac403b40ddc36, type: 3}
+    - {fileID: -49130668184793455, guid: df480a9eaf21a144b93ac403b40ddc36, type: 3}
+    - {fileID: -2330519403281856691, guid: df480a9eaf21a144b93ac403b40ddc36, type: 3}
   m_AnimationClipSettings:
     serializedVersion: 2
     m_AdditiveReferencePoseClip: {fileID: 0}
@@ -84,7 +84,7 @@ AnimationClip:
   - time: 0.41666666
     functionName: DestroyFromEvent
     data: 
-    objectReferenceParameter: {fileID: 11500000, guid: 66ed7f179ba084c4fb020e58ac55892d, type: 3}
+    objectReferenceParameter: {fileID: 11500000, guid: bb560f3269115d24287ba58c4ba62984, type: 3}
     floatParameter: 0
     intParameter: 0
     messageOptions: 0

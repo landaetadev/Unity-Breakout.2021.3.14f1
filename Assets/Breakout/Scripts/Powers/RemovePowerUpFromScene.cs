@@ -17,7 +17,7 @@ public class RemovePowerUpFromScene : MonoBehaviour
     }
     private void OnDestroy()
     {
-        if (isQuitting == true) {
+        if (isQuitting) {
             return;
         }
         

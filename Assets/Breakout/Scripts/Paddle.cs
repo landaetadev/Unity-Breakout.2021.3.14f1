@@ -1,4 +1,3 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -6,15 +5,14 @@ using UnityEngine;
 public class Paddle : MonoBehaviour
 {
     [SerializeField] float paddleSpeed = 5; //Velocidad del paddle
-    [SerializeField] float xLimit = 7.1f; //Limite del paddle
-    [SerializeField] float bigSizeTime = 10; //Tiempo que dura el big size
+    [SerializeField] float xLimit = 5;  //Limite del paddle
+    [SerializeField] float bigSizeTime = 10;  //Tiempo que dura el big size
     //[SerializeField] GameManager gameManager;
-    bool bulletsActive;
     [SerializeField] GameObject bulletPrefab; //INSTANCIA DE LA BALA
     [SerializeField] float fireRate = 1; //TIEMPO ENTRE DISPAROS DE LAS BALAS
     [SerializeField] float bulletsTime = 10; //TIEMPO QUE DURA EL PODER DE LAS BALAS
     [SerializeField] Vector3 bulletOffset;
-    
+    bool bulletsActive;
     public bool BulletsActive {
         get => bulletsActive;
         set {
@@ -24,16 +22,16 @@ public class Paddle : MonoBehaviour
         }
     }
 
+    void ResetBulletsActive() { //DESACTIVAR EL PODER DE LAS BALAS
+        bulletsActive = false;
+        GameManager.Instance.powerUpIsActive = false;
+    }
+
     IEnumerator ShootBullets() {
         while (BulletsActive) {
             Instantiate(bulletPrefab, transform.position + bulletOffset, Quaternion.identity);
             yield return new WaitForSeconds(fireRate);
         }
-    }
-
-        void ResetBulletsActive() { //DESACTIVAR EL PODER DE LAS BALAS
-        bulletsActive = false;
-        GameManager.InstanceGameManager.powerUpIsActive = false;
     }
 
     void Update()
@@ -48,14 +46,10 @@ public class Paddle : MonoBehaviour
             transform.position += Vector3.left * Time.deltaTime * paddleSpeed;
         }
     }
-    public void IncreaseSize() { //PODER PARA AUMENTAR EL TAMAÑO DE PADDLE
-        if (GameManager.InstanceGameManager.ballIsOnPlay == false){
-            return;
-        }
-        // NullReferenceException: Object reference not set to an instance of an object
-        // Paddle.IncreaseSize () (at Assets/Breakout/Scripts/Paddle.cs:31)
-        // BigSizePaddle.OnTriggerEnter2D (UnityEngine.Collider2D collision) (at Assets/Breakout/Scripts/BigSizePaddle.cs:19)
 
+    public void IncreaseSize() { //PODER PARA AUMENTAR EL TAMAÑO DE PADDLE
+        if (!GameManager.Instance.ballIsOnPlay)
+            return;
         Vector3 newSize = transform.localScale;
         newSize.x = 1.2f;
         transform.localScale = newSize;
@@ -65,9 +59,6 @@ public class Paddle : MonoBehaviour
     IEnumerator BackToOriginalSize() {
         yield return new WaitForSeconds(bigSizeTime);
         transform.localScale = new Vector3(1, 1, 1);
-        GameManager.InstanceGameManager.powerUpIsActive = false;
+        GameManager.Instance.powerUpIsActive = false;
     }
-
 }
-
-

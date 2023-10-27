@@ -1,7 +1,25 @@
 fileFormatVersion: 2
-guid: 66043426fe17645b682fc32d6c303639
+guid: df480a9eaf21a144b93ac403b40ddc36
 TextureImporter:
-  internalIDToNameTable: []
+  internalIDToNameTable:
+  - first:
+      213: 5986030973748356752
+    second: Explosion_0
+  - first:
+      213: -5600206312213581617
+    second: Explosion_1
+  - first:
+      213: 3815954189206336483
+    second: Explosion_2
+  - first:
+      213: -3690502768834906923
+    second: Explosion_3
+  - first:
+      213: -49130668184793455
+    second: Explosion_4
+  - first:
+      213: -2330519403281856691
+    second: Explosion_5
   externalObjects: {}
   serializedVersion: 12
   mipmaps:
@@ -63,7 +81,7 @@ TextureImporter:
   textureFormatSet: 0
   ignorePngGamma: 0
   applyGammaDecoding: 0
-  cookieLightType: 0
+  cookieLightType: 1
   platformSettings:
   - serializedVersion: 3
     buildTarget: DefaultTexturePlatform
@@ -143,8 +161,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: f01c63542f39642dd9b2b90c48a18840
-      internalID: -303758364
+      spriteID: 096a1cc8477a21350800000000000000
+      internalID: 5986030973748356752
       vertices: []
       indices: 
       edges: []
@@ -164,8 +182,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 1522227f4b047434d8945c54edfe1c76
-      internalID: -1261591578
+      spriteID: fc0fb9bb7021842b0800000000000000
+      internalID: -5600206312213581617
       vertices: []
       indices: 
       edges: []
@@ -185,8 +203,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 959244a782984498aaa2217c925591bf
-      internalID: 866327470
+      spriteID: 3e3bec60e1ef4f430800000000000000
+      internalID: 3815954189206336483
       vertices: []
       indices: 
       edges: []
@@ -206,8 +224,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d6861e5fad0214670a5a384c983234c7
-      internalID: -38267742
+      spriteID: 5d4fffce843b8ccc0800000000000000
+      internalID: -3690502768834906923
       vertices: []
       indices: 
       edges: []
@@ -227,8 +245,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 438e73f5e8b884d42bc018154c731657
-      internalID: 1072346260
+      spriteID: 19e8447eae3715ff0800000000000000
+      internalID: -49130668184793455
       vertices: []
       indices: 
       edges: []
@@ -248,8 +266,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 64705f1599089483facb383d0278f316
-      internalID: 1628350228
+      spriteID: d47ca3943f458afd0800000000000000
+      internalID: -2330519403281856691
       vertices: []
       indices: 
       edges: []
@@ -265,12 +283,12 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Explosion_1: -1261591578
-      Explosion_4: 1072346260
-      Explosion_2: 866327470
-      Explosion_0: -303758364
-      Explosion_5: 1628350228
-      Explosion_3: -38267742
+      Explosion_1: -5600206312213581617
+      Explosion_4: -49130668184793455
+      Explosion_2: 3815954189206336483
+      Explosion_0: 5986030973748356752
+      Explosion_5: -2330519403281856691
+      Explosion_3: -3690502768834906923
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0
